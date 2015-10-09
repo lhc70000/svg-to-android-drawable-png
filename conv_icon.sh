@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dpis=("m" "h" "xh" "xxh" "xxxh")
-sizes=("100%" "150%" "200%" "300%" "400%")
+sizes=("1" "1.5" "2" "3" "4")
 
 for file in $@
 do
@@ -14,8 +14,7 @@ do
       mkdir $folder
     fi
     size=${sizes[$i]}
-    echo "Converting: $file with ${dpi}dpi($size)"
-    convert -background transparent -resize $size $file.svg $folder/$file.png
+    echo "Converting: $file with ${dpi}dpi"
+    svgexport $file.svg $folder/$file.png ${size}x
   done
-  shift
 done
